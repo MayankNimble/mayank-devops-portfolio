@@ -11,7 +11,6 @@
   --bg2: #6b3074;
   --bg3: #2e8b8b;
 
-  /* 🔥 MORE TRANSPARENT GLASS */
   --glass: rgba(255,255,255,0.06);
   --border: rgba(255,255,255,0.16);
 
@@ -47,12 +46,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* FLOATING BACKGROUND TEXT */
+/* FLOATING BACKGROUND TEXT (NOW ALWAYS VISIBLE) */
 .floating {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .float-text {
@@ -95,41 +94,40 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* GLASS CARD */
+/* GLASS CARD (BLENDING FIX) */
 .card {
   background: var(--glass);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 2rem;
   box-shadow: 0 30px 70px rgba(0,0,0,0.35);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  isolation: isolate;
 }
 
 .card:hover {
   transform: translateY(-6px);
 }
 
-/* PROFILE — TRUE CENTER */
+/* PROFILE */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
-/* IMAGE */
 .avatar-wrap {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   margin-bottom: 0.8rem;
   animation: avatarBreath 8s ease-in-out infinite;
-  transform: translateZ(0);
 }
 
 @keyframes avatarBreath {
@@ -145,12 +143,11 @@ body {
   border: 4px solid rgba(255,255,255,0.25);
 }
 
-/* NAME UNDER IMAGE */
+/* NAME */
 .name {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 2px;
-  margin-top: 0.2rem;
   background: linear-gradient(90deg, #fff, var(--accent), #fff);
   background-size: 200%;
   -webkit-background-clip: text;
@@ -174,7 +171,6 @@ body {
   gap: 1.2rem;
 }
 
-/* GOLDEN HOVER */
 .info-btn {
   background: rgba(255,255,255,0.07);
   border: 1px solid var(--border);
@@ -191,38 +187,9 @@ body {
     0 25px 55px rgba(255,209,102,0.25);
 }
 
-.info-btn span {
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.info-btn strong {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.info-btn p {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.3s ease;
-}
-
-.info-btn:hover p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* MOBILE */
 @media (max-width: 900px) {
   .container { grid-template-columns: 1fr; }
-  .details { grid-template-columns: 1fr; }
-  .info-btn p { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -240,23 +207,19 @@ body {
 </div>
 
 <div class="container">
-
   <div class="card profile">
-    <div class="avatar-wrap">
-      <img src="./profile.jpg" alt="Mayank">
-    </div>
+    <div class="avatar-wrap"><img src="./profile.jpg" alt="Mayank"></div>
     <div class="name">Mayank</div>
   </div>
 
   <div class="card details">
-    <div class="info-btn"><span>Role</span><strong>DevOps Engineer</strong><p>Automating scalable cloud systems.</p></div>
-    <div class="info-btn"><span>Cloud</span><strong>AWS</strong><p>Infrastructure & deployments.</p></div>
-    <div class="info-btn"><span>Core Focus</span><strong>CI/CD · Automation</strong><p>Fast, reliable releases.</p></div>
-    <div class="info-btn"><span>Stack</span><strong>Linux · Docker · Terraform</strong><p>Modern workflows.</p></div>
-    <div class="info-btn"><span>Configuration</span><strong>Ansible</strong><p>Consistency everywhere.</p></div>
-    <div class="info-btn"><span>Purpose</span><strong>Learning & Showcase</strong><p>Real-world DevOps skills.</p></div>
+    <div class="info-btn"><strong>DevOps Engineer</strong></div>
+    <div class="info-btn"><strong>AWS</strong></div>
+    <div class="info-btn"><strong>CI/CD</strong></div>
+    <div class="info-btn"><strong>Linux · Docker</strong></div>
+    <div class="info-btn"><strong>Ansible</strong></div>
+    <div class="info-btn"><strong>Showcase</strong></div>
   </div>
-
 </div>
 
 <script>
