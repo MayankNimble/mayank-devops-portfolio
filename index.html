@@ -1,186 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mayank | DevOps Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mayank | DevOps Engineer</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #3b3f8c, #0a0d2e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #2d2f8f, #0a0d2b);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-/* background floating text */
-.bg-text {
-  position: fixed;
-  font-size: 120px;
-  opacity: 0.05;
-  font-weight: 800;
-  pointer-events: none;
-}
-.bg1 { top: 10%; left: 5%; }
-.bg2 { bottom: 10%; right: 5%; }
+    /* Floating background text */
+    .bg-text {
+      position: fixed;
+      font-size: 140px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.05);
+      user-select: none;
+      pointer-events: none;
+    }
 
-/* layout */
-.container {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
+    .bg-k8s { top: 8%; left: 5%; }
+    .bg-linux { bottom: 10%; right: 5%; }
+    .bg-aws { top: 45%; right: 20%; }
 
-/* glass card */
-.card {
-  width: 320px;
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
 
-/* profile */
-.avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin: auto;
-  display: block;
-  border: 3px solid #5ac8fa;
-}
+    .cards {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-h1 {
-  text-align: center;
-  margin: 15px 0 5px;
-}
+    .glass {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      padding: 32px;
+      width: 320px;
+      transition: transform 0.3s ease;
+    }
 
-.role {
-  text-align: center;
-  opacity: 0.85;
-  margin-bottom: 15px;
-}
+    .glass:hover {
+      transform: translateY(-6px);
+    }
 
-/* skills */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
+    .profile img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #7dd3fc;
+      object-fit: cover;
+      margin-bottom: 18px;
+    }
 
-.skill {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.25);
-  font-size: 13px;
-}
+    .profile h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
 
-/* api box */
-.api-box {
-  width: 320px;
-}
+    .profile p {
+      opacity: 0.85;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: #5ac8fa;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 12px;
-}
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
 
-pre {
-  background: rgba(0,0,0,0.3);
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  max-height: 220px;
-  overflow: auto;
-}
+    .skill {
+      padding: 7px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
 
-/* mobile */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
+    .info h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #7dd3fc;
+    }
+
+    .info p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .cta {
+      margin-top: 22px;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      .bg-text {
+        font-size: 90px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="bg-text bg1">Kubernetes</div>
-<div class="bg-text bg2">Linux</div>
+  <!-- Floating background words -->
+  <div class="bg-text bg-k8s">Kubernetes</div>
+  <div class="bg-text bg-linux">Linux</div>
+  <div class="bg-text bg-aws">AWS</div>
 
-<div class="container">
+  <div class="container">
+    <div class="cards">
 
-  <!-- Profile -->
-  <div class="card">
-    <img class="avatar" src="https://i.pravatar.cc/150?img=3" />
-    <h1>Mayank</h1>
-    <div class="role">DevOps Engineer</div>
+      <!-- Profile Card -->
+      <div class="glass profile">
+        <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Profile">
+        <h1>Mayank</h1>
+        <p>DevOps Engineer</p>
 
-    <div class="skills">
-      <div class="skill">AWS</div>
-      <div class="skill">Linux</div>
-      <div class="skill">Docker</div>
-      <div class="skill">Terraform</div>
-      <div class="skill">Ansible</div>
-      <div class="skill">CI/CD</div>
+        <div class="skills">
+          <span class="skill">AWS</span>
+          <span class="skill">Linux</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">Terraform</span>
+          <span class="skill">Ansible</span>
+          <span class="skill">CI/CD</span>
+        </div>
+      </div>
+
+      <!-- About Card -->
+      <div class="glass info">
+        <h2>About Me</h2>
+        <p>
+          Passionate DevOps Engineer focused on building scalable, reliable,
+          and automated cloud infrastructure. Strong hands-on experience with
+          AWS, containerization, and infrastructure as code.
+        </p>
+
+        <button class="cta">Download Resume</button>
+      </div>
+
     </div>
   </div>
-
-  <!-- API -->
-  <div class="card api-box">
-    <h2>Live Serverless API</h2>
-    <p style="opacity:0.8">API Gateway + Lambda (Python)</p>
-
-    <button onclick="fetchAPI()">Fetch Live Data</button>
-
-    <pre id="output">Waiting for request…</pre>
-  </div>
-
-</div>
-
-<script>
-const API_URL = "PASTE_YOUR_API_GATEWAY_INVOKE_URL_HERE";
-
-async function fetchAPI() {
-  const output = document.getElementById("output");
-  output.textContent = "Loading...";
-
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({})
-    });
-
-    if (!res.ok) throw new Error("HTTP " + res.status);
-
-    const data = await res.json();
-    output.textContent = JSON.stringify(data, null, 2);
-
-  } catch (err) {
-    output.textContent = "API connection failed ❌\n" + err.message;
-  }
-}
-</script>
 
 </body>
 </html>
