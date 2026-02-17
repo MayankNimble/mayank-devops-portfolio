@@ -11,8 +11,8 @@
   --bg2: #6b3074;
   --bg3: #2e8b8b;
 
-  --glass: rgba(255,255,255,0.12);
-  --border: rgba(255,255,255,0.22);
+  --glass: rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.18);
 
   --text: #ffffff;
   --muted: rgba(255,255,255,0.65);
@@ -52,6 +52,45 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* FLOATING BACKGROUND TEXT */
+.floating {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.float-text {
+  position: absolute;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  opacity: 0.18;
+  animation: floatUp linear infinite;
+  text-transform: uppercase;
+}
+
+.float-text.linux { color: #9be7ff; }
+.float-text.aws { color: #ffd166; }
+.float-text.docker { color: #a3ffd6; }
+.float-text.k8s { color: #cdb4db; }
+.float-text.terraform { color: #bde0fe; }
+.float-text.ansible { color: #ffc8dd; }
+.float-text.devops { color: #f1faee; }
+
+.float-text:nth-child(1) { left: 10%; bottom: -20%; animation-duration: 34s; }
+.float-text:nth-child(2) { left: 25%; bottom: -30%; animation-duration: 28s; }
+.float-text:nth-child(3) { left: 40%; bottom: -25%; animation-duration: 32s; }
+.float-text:nth-child(4) { left: 55%; bottom: -35%; animation-duration: 30s; }
+.float-text:nth-child(5) { left: 70%; bottom: -28%; animation-duration: 36s; }
+.float-text:nth-child(6) { left: 85%; bottom: -32%; animation-duration: 29s; }
+.float-text:nth-child(7) { left: 48%; bottom: -18%; animation-duration: 40s; }
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-150vh); }
+}
+
 /* LAYOUT */
 .container {
   width: 90%;
@@ -59,6 +98,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
+  z-index: 1;
   animation: fadeUp 1s ease forwards;
 }
 
@@ -104,7 +144,7 @@ body {
 }
 
 .info-btn {
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.4rem;
@@ -129,7 +169,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Desktop hover effect */
+/* 🔹 DESKTOP: hidden until hover */
 .info-btn p {
   margin-top: 0.6rem;
   font-size: 0.85rem;
@@ -144,7 +184,7 @@ body {
   transform: translateY(0);
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE OPTIMIZATION */
 @media (max-width: 900px) {
 
   body {
@@ -179,16 +219,37 @@ body {
     padding: 1.2rem;
   }
 
-  /* Mobile: always show text */
+  /* 📱 Mobile: descriptions always visible */
   .info-btn p {
     opacity: 1;
     transform: none;
+  }
+
+  /* 📱 Floating text visible but calm */
+  .floating {
+    opacity: 0.14;
+  }
+
+  .float-text {
+    font-size: 0.75rem;
+    animation-duration: 45s;
   }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Floating Background Text -->
+<div class="floating">
+  <div class="float-text linux">LINUX</div>
+  <div class="float-text docker">DOCKER</div>
+  <div class="float-text aws">AWS</div>
+  <div class="float-text k8s">KUBERNETES</div>
+  <div class="float-text terraform">TERRAFORM</div>
+  <div class="float-text ansible">ANSIBLE</div>
+  <div class="float-text devops">DEVOPS</div>
+</div>
 
 <div class="container">
 
