@@ -7,193 +7,244 @@
 
 <style>
 :root {
-  --bg1: #3a1c71;
-  --bg2: #6b3074;
-  --bg3: #2e8b8b;
-  --glass: rgba(255,255,255,0.06);
-  --border: rgba(255,255,255,0.16);
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.65);
-  --accent: #ffd166;
+  --bg1:#3a1c71;
+  --bg2:#6b3074;
+  --bg3:#2e8b8b;
+  --glass:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.16);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.65);
+  --accent:#ffd166;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3));
-  background-size: 400% 400%;
-  animation: bgMove 22s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  color: var(--text);
+  min-height:100vh;
+  background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3));
+  background-size:400% 400%;
+  animation:bgMove 22s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:var(--text);
+  overflow-x:hidden;
 }
 
 @keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* FLOATING TEXT */
+/* FLOATING TECH TEXT */
 .floating {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
 }
 
 .float-text {
-  position: absolute;
-  font-weight: 600;
-  letter-spacing: 3px;
-  font-size: 0.9rem;
-  opacity: 0.22;
-  animation: floatUp linear infinite;
-  text-transform: uppercase;
+  position:absolute;
+  font-weight:600;
+  letter-spacing:3px;
+  font-size:.85rem;
+  opacity:.22;
+  text-transform:uppercase;
+  animation:floatUp linear infinite;
+  transition:transform .15s ease-out;
+  will-change:transform;
 }
 
-.float-text.linux { color: #9be7ff; }
-.float-text.aws { color: var(--accent); }
-.float-text.docker { color: #a3ffd6; }
-.float-text.k8s { color: #cdb4db; }
-.float-text.terraform { color: #bde0fe; }
-.float-text.ansible { color: #ffc8dd; }
-.float-text.devops { color: #f1faee; }
+.float-text.linux{color:#9be7ff}
+.float-text.aws{color:var(--accent)}
+.float-text.docker{color:#a3ffd6}
+.float-text.k8s{color:#cdb4db}
+.float-text.terraform{color:#bde0fe}
+.float-text.ansible{color:#ffc8dd}
+.float-text.devops{color:#f1faee}
 
-.float-text:nth-child(1) { left: 10%; bottom: -20%; animation-duration: 34s; }
-.float-text:nth-child(2) { left: 25%; bottom: -30%; animation-duration: 28s; }
-.float-text:nth-child(3) { left: 40%; bottom: -25%; animation-duration: 32s; }
-.float-text:nth-child(4) { left: 55%; bottom: -35%; animation-duration: 30s; }
-.float-text:nth-child(5) { left: 70%; bottom: -28%; animation-duration: 36s; }
-.float-text:nth-child(6) { left: 85%; bottom: -32%; animation-duration: 29s; }
-.float-text:nth-child(7) { left: 48%; bottom: -18%; animation-duration: 40s; }
+.float-text:nth-child(1){left:10%;bottom:-20%;animation-duration:34s}
+.float-text:nth-child(2){left:25%;bottom:-30%;animation-duration:28s}
+.float-text:nth-child(3){left:40%;bottom:-25%;animation-duration:32s}
+.float-text:nth-child(4){left:55%;bottom:-35%;animation-duration:30s}
+.float-text:nth-child(5){left:70%;bottom:-28%;animation-duration:36s}
+.float-text:nth-child(6){left:85%;bottom:-32%;animation-duration:29s}
+.float-text:nth-child(7){left:48%;bottom:-18%;animation-duration:40s}
 
 @keyframes floatUp {
-  from { transform: translateY(0); }
-  to { transform: translateY(-150vh); }
+  from{transform:translateY(0)}
+  to{transform:translateY(-150vh)}
 }
 
 /* LAYOUT */
 .container {
-  width: 90%;
-  max-width: 1100px;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 2rem;
-  z-index: 1;
+  width:92%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:2rem;
+  z-index:1;
 }
 
-/* GLASS CARD */
 .card {
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 2rem;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:2rem;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
 /* PROFILE */
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 .avatar-wrap {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  margin-bottom: 0.8rem;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  margin-bottom:.8rem;
+  animation:avatarBreath 8s ease-in-out infinite;
+}
+
+@keyframes avatarBreath {
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
 }
 
 .avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid rgba(255,255,255,0.25);
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,.25);
 }
 
 .name {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #fff, var(--accent), #fff);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
+  font-size:3rem;
+  font-weight:700;
+  letter-spacing:2px;
+  background:linear-gradient(90deg,#fff,var(--accent),#fff);
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shimmer 6s linear infinite;
 }
 
 @keyframes shimmer {
-  to { background-position: 200%; }
+  to{background-position:200%}
 }
 
 /* DETAILS */
 .details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.2rem;
 }
 
 .info-btn {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.4rem;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1.4rem;
+  transition:.4s ease;
+}
+
+.info-btn:hover {
+  transform:translateY(-6px) scale(1.02);
+  border-color:var(--accent);
 }
 
 .info-btn span {
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: var(--muted);
-  text-transform: uppercase;
+  font-size:.75rem;
+  letter-spacing:1px;
+  color:var(--muted);
+  text-transform:uppercase;
 }
 
 .info-btn strong {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 1.1rem;
+  display:block;
+  margin-top:.4rem;
+  font-size:1.1rem;
 }
 
 .info-btn p {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  color: var(--muted);
+  margin-top:.6rem;
+  font-size:.85rem;
+  color:var(--muted);
 }
 
-/* ABOUT + SOCIAL */
+/* ABOUT */
 .full {
-  grid-column: 1 / -1;
+  grid-column:1/-1;
 }
 
-.links a {
-  display: block;
-  margin-top: 0.6rem;
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 0.95rem;
+.about-text {
+  margin-top:1rem;
+  font-size:.95rem;
+  line-height:1.7;
+  color:var(--muted);
+  animation:fadeUp 1.2s ease forwards;
 }
 
-.links a:hover {
-  text-decoration: underline;
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
-  .container { grid-template-columns: 1fr; }
-  .details { grid-template-columns: 1fr; }
+/* SOCIAL ICONS */
+.socials {
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  z-index:5;
+}
+
+.socials a {
+  width:52px;
+  height:52px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  backdrop-filter:blur(12px);
+  transition:.35s ease;
+}
+
+.socials a:hover {
+  transform:translateY(-4px) scale(1.06);
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px rgba(255,209,102,.6),
+             0 25px 50px rgba(255,209,102,.35);
+}
+
+.socials img {
+  width:24px;
+  height:24px;
+  filter:invert(1);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .container{grid-template-columns:1fr}
+  .details{grid-template-columns:1fr}
+  .name{font-size:2.4rem}
 }
 </style>
 </head>
@@ -220,36 +271,58 @@ body {
   </div>
 
   <div class="card details">
-    <div class="info-btn"><span>Role</span><strong>DevOps Engineer</strong><p>Automating scalable cloud systems.</p></div>
-    <div class="info-btn"><span>Cloud</span><strong>AWS</strong><p>Infrastructure & deployments.</p></div>
-    <div class="info-btn"><span>Core Focus</span><strong>CI/CD · Automation</strong><p>Fast, reliable releases.</p></div>
-    <div class="info-btn"><span>Stack</span><strong>Linux · Docker · Terraform</strong><p>Modern workflows.</p></div>
-    <div class="info-btn"><span>Configuration</span><strong>Ansible</strong><p>Consistency everywhere.</p></div>
-    <div class="info-btn"><span>Purpose</span><strong>Learning & Building</strong><p>Hands-on DevOps practice.</p></div>
+    <div class="info-btn"><span>Role</span><strong>DevOps Engineer</strong><p>Automation-first mindset.</p></div>
+    <div class="info-btn"><span>Cloud</span><strong>AWS</strong><p>Scalable infrastructure.</p></div>
+    <div class="info-btn"><span>Core</span><strong>CI/CD</strong><p>Fast, reliable delivery.</p></div>
+    <div class="info-btn"><span>Stack</span><strong>Linux · Docker</strong><p>System-level control.</p></div>
+    <div class="info-btn"><span>IaC</span><strong>Terraform</strong><p>Repeatable builds.</p></div>
+    <div class="info-btn"><span>Config</span><strong>Ansible</strong><p>Consistency at scale.</p></div>
   </div>
 
-  <!-- ABOUT ME -->
   <div class="card full">
     <span>About Me</span>
-    <p style="margin-top:1rem; color:var(--muted); line-height:1.6;">
-      I am a DevOps-focused engineer with strong interest in building reliable,
-      automated cloud infrastructure. I enjoy working close to systems,
-      understanding how applications behave in production, and improving
-      deployment workflows through infrastructure as code and CI/CD pipelines.
-      My goal is to contribute to real-world environments where scalability,
-      stability, and automation matter.
+    <p class="about-text">
+      I build and explore cloud infrastructure with a strong focus on automation,
+      reliability, and real-world deployment workflows. My interest lies in how
+      systems behave under load, how failures are handled, and how infrastructure
+      can be defined, tested, and shipped like software.
     </p>
   </div>
 
-  <!-- SOCIAL / CONTACT -->
-  <div class="card full links">
-    <span>Connect</span>
-    <a href="https://github.com/MayankNimble" target="_blank">GitHub — MayankNimble</a>
-    <a href="https://www.linkedin.com/in/mayank-nimble-6a4ba2318/" target="_blank">LinkedIn — Mayank Nimble</a>
-    <a href="mailto:nimblemayank@gmail.com">Email — nimblemayank@gmail.com</a>
-  </div>
-
 </div>
+
+<div class="socials">
+  <a href="https://github.com/MayankNimble" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg">
+  </a>
+  <a href="https://www.linkedin.com/in/mayank-nimble-6a4ba2318/" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg">
+  </a>
+  <a href="mailto:nimblemayank@gmail.com">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
+  </a>
+</div>
+
+<script>
+const floatTexts=document.querySelectorAll('.float-text');
+
+document.addEventListener('mousemove',e=>{
+  const mx=e.clientX,my=e.clientY;
+  floatTexts.forEach(t=>{
+    const r=t.getBoundingClientRect();
+    const dx=r.left+r.width/2-mx;
+    const dy=r.top+r.height/2-my;
+    const dist=Math.sqrt(dx*dx+dy*dy);
+    const radius=140;
+    if(dist<radius){
+      const f=(radius-dist)/radius;
+      t.style.transform=`translate(${dx*f*.3}px,${dy*f*.3}px)`;
+    } else {
+      t.style.transform='translate(0,0)';
+    }
+  });
+});
+</script>
 
 </body>
 </html>
