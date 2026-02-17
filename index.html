@@ -2,182 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mayank | DevOps Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayank | DevOps Portfolio</title>
 
   <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.25);
+      --text-main: #ffffff;
+      --accent: #38bdf8;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at top left, #2d2f8f, #0a0d2b);
-      color: #fff;
+      background: linear-gradient(135deg, #0f172a, #312e81, #020617);
       overflow-x: hidden;
+      color: var(--text-main);
     }
 
-    /* Floating background text */
-    .bg-text {
+    /* ===== FLOATING BACKGROUND TEXT ===== */
+    .floating-bg {
       position: fixed;
-      font-size: 140px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.05);
-      user-select: none;
+      inset: 0;
       pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
 
-    .bg-k8s { top: 8%; left: 5%; }
-    .bg-linux { bottom: 10%; right: 5%; }
-    .bg-aws { top: 45%; right: 20%; }
+    .floating-bg span {
+      position: absolute;
+      color: rgba(255,255,255,0.08);
+      font-size: 40px;
+      animation: float 30s linear infinite;
+      white-space: nowrap;
+    }
 
+    @keyframes float {
+      from {
+        transform: translateY(110vh);
+      }
+      to {
+        transform: translateY(-120vh);
+      }
+    }
+
+    /* ===== LAYOUT ===== */
     .container {
+      position: relative;
+      z-index: 1;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
       align-items: center;
-      padding: 30px;
-    }
-
-    .cards {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .glass {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
-      padding: 32px;
-      width: 320px;
-      transition: transform 0.3s ease;
-    }
-
-    .glass:hover {
-      transform: translateY(-6px);
-    }
-
-    .profile img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid #7dd3fc;
-      object-fit: cover;
-      margin-bottom: 18px;
-    }
-
-    .profile h1 {
-      font-size: 28px;
-      margin-bottom: 6px;
-    }
-
-    .profile p {
-      opacity: 0.85;
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .skill {
-      padding: 7px 14px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.18);
-      font-size: 13px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .info h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #7dd3fc;
-    }
-
-    .info p {
-      font-size: 14px;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-
-    .cta {
-      margin-top: 22px;
-      padding: 12px;
-      border-radius: 12px;
-      border: none;
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      color: #000;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: opacity 0.2s ease;
-    }
-
-    .cta:hover {
-      opacity: 0.85;
     }
 
     @media (max-width: 768px) {
-      .bg-text {
-        font-size: 90px;
+      .container {
+        grid-template-columns: 1fr;
+        padding: 20px;
       }
+
+      .floating-bg span {
+        display: none; /* mobile = clean */
+      }
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    /* ===== PROFILE ===== */
+    .profile {
+      text-align: center;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      opacity: 0.85;
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.15);
+      border: 1px solid rgba(56,189,248,0.4);
+      font-size: 13px;
+    }
+
+    /* ===== API SECTION ===== */
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    button {
+      margin-top: 14px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent);
+      color: #020617;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .api-output {
+      margin-top: 16px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 14px;
+      max-height: 260px;
+      overflow: auto;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Floating background words -->
-  <div class="bg-text bg-k8s">Kubernetes</div>
-  <div class="bg-text bg-linux">Linux</div>
-  <div class="bg-text bg-aws">AWS</div>
+  <!-- FLOATING BACKGROUND WORDS -->
+  <div class="floating-bg">
+    <span style="left:10%; animation-delay:0s;">AWS</span>
+    <span style="left:30%; animation-delay:5s;">Docker</span>
+    <span style="left:50%; animation-delay:10s;">Kubernetes</span>
+    <span style="left:70%; animation-delay:15s;">Terraform</span>
+    <span style="left:20%; animation-delay:20s;">Linux</span>
+    <span style="left:60%; animation-delay:25s;">DevOps</span>
+  </div>
 
   <div class="container">
-    <div class="cards">
 
-      <!-- Profile Card -->
-      <div class="glass profile">
-        <img src="https://i.imgur.com/8Km9tLL.jpg" alt="Profile">
-        <h1>Mayank</h1>
-        <p>DevOps Engineer</p>
+    <!-- PROFILE CARD -->
+    <div class="glass profile">
+      <img src="profile.jpg" alt="Mayank" />
+      <h1>Mayank</h1>
+      <p class="subtitle">DevOps Engineer</p>
 
-        <div class="skills">
-          <span class="skill">AWS</span>
-          <span class="skill">Linux</span>
-          <span class="skill">Docker</span>
-          <span class="skill">Kubernetes</span>
-          <span class="skill">Terraform</span>
-          <span class="skill">Ansible</span>
-          <span class="skill">CI/CD</span>
-        </div>
+      <div class="tags">
+        <div class="tag">AWS</div>
+        <div class="tag">Linux</div>
+        <div class="tag">Docker</div>
+        <div class="tag">Terraform</div>
+        <div class="tag">Ansible</div>
+        <div class="tag">CI/CD</div>
       </div>
-
-      <!-- About Card -->
-      <div class="glass info">
-        <h2>About Me</h2>
-        <p>
-          Passionate DevOps Engineer focused on building scalable, reliable,
-          and automated cloud infrastructure. Strong hands-on experience with
-          AWS, containerization, and infrastructure as code.
-        </p>
-
-        <button class="cta">Download Resume</button>
-      </div>
-
     </div>
+
+    <!-- API CARD -->
+    <div class="glass">
+      <h2>Live Serverless API</h2>
+      <p class="subtitle">
+        Powered by API Gateway + Lambda (Python)
+      </p>
+
+      <button onclick="loadAPI()">Fetch Live Data</button>
+
+      <div id="api" class="api-output">
+        Loading API data...
+      </div>
+    </div>
+
   </div>
+
+  <!-- API SCRIPT -->
+  <script>
+    async function loadAPI() {
+      const box = document.getElementById("api");
+      box.textContent = "Loading...";
+
+      try {
+        const res = await fetch(
+          "https://8vbo6nk6s9.execute-api.us-east-1.amazonaws.com/dev",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+
+        const data = await res.json();
+        box.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        box.textContent = "API connection failed";
+        console.error(err);
+      }
+    }
+
+    loadAPI();
+  </script>
 
 </body>
 </html>
