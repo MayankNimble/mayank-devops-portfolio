@@ -11,8 +11,8 @@
   --bg2: #6b3074;
   --bg3: #2e8b8b;
 
-  /* ✅ ONLY CHANGE: MORE TRANSPARENT GLASS */
-  --glass: rgba(255,255,255,0.035);
+  /* 🔥 MORE TRANSPARENT GLASS */
+  --glass: rgba(255,255,255,0.06);
   --border: rgba(255,255,255,0.16);
 
   --text: #ffffff;
@@ -98,10 +98,10 @@ body {
   z-index: 1;
 }
 
-/* GLASS CARD — SAME SIZE, SAME SHAPE */
+/* GLASS CARD */
 .card {
   background: var(--glass);
-  backdrop-filter: blur(11px); /* ✅ ONLY CHANGE */
+  backdrop-filter: blur(14px);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 2rem;
@@ -113,7 +113,7 @@ body {
   transform: translateY(-6px);
 }
 
-/* PROFILE */
+/* PROFILE — TRUE CENTER */
 .profile {
   display: flex;
   flex-direction: column;
@@ -129,6 +129,7 @@ body {
   border-radius: 50%;
   margin-bottom: 0.8rem;
   animation: avatarBreath 8s ease-in-out infinite;
+  transform: translateZ(0);
 }
 
 @keyframes avatarBreath {
@@ -144,7 +145,7 @@ body {
   border: 4px solid rgba(255,255,255,0.25);
 }
 
-/* NAME */
+/* NAME UNDER IMAGE */
 .name {
   font-size: 3rem;
   font-weight: 700;
@@ -188,6 +189,33 @@ body {
   box-shadow:
     0 0 0 1px rgba(255,209,102,0.45),
     0 25px 55px rgba(255,209,102,0.25);
+}
+
+.info-btn span {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.info-btn strong {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.info-btn p {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+}
+
+.info-btn:hover p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* MOBILE */
