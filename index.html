@@ -23,6 +23,55 @@
   box-sizing:border-box;
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
+/* ✨ GOLDEN LIGHTNING EDGE EFFECT */
+.card,
+.info-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* glowing border layer */
+.card::before,
+.info-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 209, 102, 0.25),
+    rgba(255, 209, 102, 0.6),
+    rgba(255, 209, 102, 0.25),
+    transparent 70%
+  );
+  opacity: 0.35;
+  filter: blur(8px);
+  animation: lightningMove 6s linear infinite;
+  pointer-events: none;
+}
+
+/* stronger glow on interaction */
+.card:hover::before,
+.card:active::before,
+.info-btn:hover::before,
+.info-btn:active::before {
+  opacity: 0.75;
+  filter: blur(10px);
+}
+
+/* lightning movement */
+@keyframes lightningMove {
+  0% {
+    transform: translateX(-60%) translateY(-60%);
+  }
+  50% {
+    transform: translateX(60%) translateY(60%);
+  }
+  100% {
+    transform: translateX(-60%) translateY(-60%);
+  }
+}
 
 body {
   min-height:100vh;
