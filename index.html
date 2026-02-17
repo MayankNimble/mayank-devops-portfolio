@@ -24,6 +24,28 @@
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
 
+/* DESKTOP: hide small text by default */
+@media (hover: hover) and (pointer: fine) {
+  .info-btn p {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .info-btn:hover p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE: always show small text */
+@media (hover: none) and (pointer: coarse) {
+  .info-btn p {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 body {
   min-height:100vh;
   background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3));
