@@ -23,55 +23,6 @@
   box-sizing:border-box;
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
 }
-/* ✨ GOLDEN LIGHTNING EDGE EFFECT */
-.card,
-.info-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-/* glowing border layer */
-.card::before,
-.info-btn::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255, 209, 102, 0.25),
-    rgba(255, 209, 102, 0.6),
-    rgba(255, 209, 102, 0.25),
-    transparent 70%
-  );
-  opacity: 0.35;
-  filter: blur(8px);
-  animation: lightningMove 6s linear infinite;
-  pointer-events: none;
-}
-
-/* stronger glow on interaction */
-.card:hover::before,
-.card:active::before,
-.info-btn:hover::before,
-.info-btn:active::before {
-  opacity: 0.75;
-  filter: blur(10px);
-}
-
-/* lightning movement */
-@keyframes lightningMove {
-  0% {
-    transform: translateX(-60%) translateY(-60%);
-  }
-  50% {
-    transform: translateX(60%) translateY(60%);
-  }
-  100% {
-    transform: translateX(-60%) translateY(-60%);
-  }
-}
 
 body {
   min-height:100vh;
@@ -142,15 +93,25 @@ body {
   z-index:1;
 }
 
-.card {
+.card,
+.info-btn {
   background:var(--glass);
   backdrop-filter:blur(14px);
   border:1px solid var(--border);
   border-radius:22px;
   padding:2rem;
   box-shadow:0 30px 70px rgba(0,0,0,.35);
-  transition:transform .4s ease;
+  transition:transform .35s ease, box-shadow .35s ease, border .35s ease;
   transform-style:preserve-3d;
+  position:relative;
+}
+
+/* 🔥 GOLDEN GLOW — ONLY WHEN ACTIVE */
+.active-glow {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px rgba(255,209,102,.5),
+    0 25px 55px rgba(255,209,102,.35);
 }
 
 /* PROFILE */
@@ -206,12 +167,7 @@ body {
 }
 
 .info-btn {
-  background:rgba(255,255,255,.07);
-  border:1px solid var(--border);
-  border-radius:18px;
   padding:1.4rem;
-  transition:transform .3s ease;
-  transform-style:preserve-3d;
 }
 
 .info-btn span {
@@ -270,8 +226,9 @@ body {
 
 .socials a:hover,
 .socials a:active {
-  transform:translateY(-4px) scale(1.06);
   border-color:var(--accent);
+  box-shadow:0 0 0 1px rgba(255,209,102,.5),
+             0 20px 40px rgba(255,209,102,.3);
 }
 
 .socials img {
@@ -324,7 +281,7 @@ body {
     <p class="about-text">
       I build and explore cloud infrastructure with a strong focus on automation,
       reliability, and real-world deployment workflows. I enjoy understanding how
-      systems behave under scale and how infrastructure can be treated as software.
+      systems behave under scale and treating infrastructure as software.
     </p>
   </div>
 
@@ -343,29 +300,34 @@ body {
 </div>
 
 <script>
-/* CURSOR / TOUCH MAGNETIC TILT */
+/* CURSOR + TOUCH TILT WITH GOLDEN GLOW */
 document.querySelectorAll('.tilt').forEach(card => {
   const strength = 12;
 
-  function move(x, y) {
-    const rect = card.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (x - cx) / rect.width;
-    const dy = (y - cy) / rect.height;
+  function activate(x, y) {
+    const r = card.getBoundingClientRect();
+    const dx = (x - (r.left + r.width/2)) / r.width;
+    const dy = (y - (r.top + r.height/2)) / r.height;
+
+    card.classList.add('active-glow');
     card.style.transform =
       `perspective(900px) rotateX(${(-dy * strength)}deg) rotateY(${dx * strength}deg)`;
   }
 
-  card.addEventListener('mousemove', e => move(e.clientX, e.clientY));
-  card.addEventListener('mouseleave', () => card.style.transform = 'none');
+  function reset() {
+    card.classList.remove('active-glow');
+    card.style.transform = 'none';
+  }
+
+  card.addEventListener('mousemove', e => activate(e.clientX, e.clientY));
+  card.addEventListener('mouseleave', reset);
 
   card.addEventListener('touchmove', e => {
     const t = e.touches[0];
-    move(t.clientX, t.clientY);
+    activate(t.clientX, t.clientY);
   });
 
-  card.addEventListener('touchend', () => card.style.transform = 'none');
+  card.addEventListener('touchend', reset);
 });
 </script>
 
