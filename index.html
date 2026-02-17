@@ -48,17 +48,11 @@ body {
 
 /* ENTRY ANIMATION */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* FLOATING TEXT */
+/* FLOATING BACKGROUND TEXT */
 .floating {
   position: fixed;
   inset: 0;
@@ -175,16 +169,19 @@ body {
   font-size: 1.1rem;
 }
 
+/* 🔹 DESKTOP: hidden until hover */
 .info-btn p {
   margin-top: 0.6rem;
   font-size: 0.85rem;
   color: var(--muted);
   opacity: 0;
+  transform: translateY(10px);
   transition: 0.3s ease;
 }
 
 .info-btn:hover p {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* 📱 MOBILE OPTIMIZATION */
@@ -222,8 +219,20 @@ body {
     padding: 1.2rem;
   }
 
+  /* 📱 Mobile: descriptions always visible */
+  .info-btn p {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 📱 Floating text visible but calm */
   .floating {
-    opacity: 0.08;
+    opacity: 0.14;
+  }
+
+  .float-text {
+    font-size: 0.75rem;
+    animation-duration: 45s;
   }
 }
 </style>
