@@ -11,7 +11,7 @@
   --bg2: #6b3074;
   --bg3: #2e8b8b;
 
-  /* 🔧 ONLY CHANGE: MORE TRANSPARENT GLASS */
+  /* 🔧 ONLY CHANGE: more transparent glass */
   --glass: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.18);
 
@@ -63,8 +63,6 @@ body {
   opacity: 0.22;
   animation: floatUp linear infinite;
   text-transform: uppercase;
-  transition: transform 0.15s ease-out;
-  will-change: transform;
 }
 
 .float-text.linux { color: #9be7ff; }
@@ -98,10 +96,10 @@ body {
   z-index: 1;
 }
 
-/* GLASS CARD — SAME SIZE, SAME EVERYTHING */
+/* GLASS CARD — SAME SIZE, SAME SHAPE */
 .card {
   background: var(--glass);
-  backdrop-filter: blur(12px); /* 🔧 slightly reduced blur */
+  backdrop-filter: blur(12px); /* 🔧 ONLY CHANGE */
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 2rem;
