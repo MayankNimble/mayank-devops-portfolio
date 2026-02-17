@@ -11,8 +11,9 @@
   --bg2: #6b3074;
   --bg3: #2e8b8b;
 
-  --glass: rgba(255,255,255,0.06);
-  --border: rgba(255,255,255,0.16);
+  /* 🔧 ONLY CHANGE: MORE TRANSPARENT GLASS */
+  --glass: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.18);
 
   --text: #ffffff;
   --muted: rgba(255,255,255,0.65);
@@ -46,12 +47,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* FLOATING BACKGROUND TEXT (NOW ALWAYS VISIBLE) */
+/* FLOATING BACKGROUND TEXT */
 .floating {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .float-text {
@@ -94,20 +95,18 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
-  z-index: 2;
+  z-index: 1;
 }
 
-/* GLASS CARD (BLENDING FIX) */
+/* GLASS CARD — SAME SIZE, SAME EVERYTHING */
 .card {
   background: var(--glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px); /* 🔧 slightly reduced blur */
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 2rem;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  box-shadow: 0 35px 80px rgba(0,0,0,0.45);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  isolation: isolate;
 }
 
 .card:hover {
@@ -208,7 +207,9 @@ body {
 
 <div class="container">
   <div class="card profile">
-    <div class="avatar-wrap"><img src="./profile.jpg" alt="Mayank"></div>
+    <div class="avatar-wrap">
+      <img src="./profile.jpg" alt="Mayank">
+    </div>
     <div class="name">Mayank</div>
   </div>
 
@@ -221,30 +222,6 @@ body {
     <div class="info-btn"><strong>Showcase</strong></div>
   </div>
 </div>
-
-<script>
-const floatTexts = document.querySelectorAll('.float-text');
-
-document.addEventListener('mousemove', e => {
-  const mx = e.clientX;
-  const my = e.clientY;
-
-  floatTexts.forEach(t => {
-    const r = t.getBoundingClientRect();
-    const dx = r.left + r.width / 2 - mx;
-    const dy = r.top + r.height / 2 - my;
-    const dist = Math.sqrt(dx*dx + dy*dy);
-    const radius = 120;
-
-    if (dist < radius) {
-      const force = (radius - dist) / radius;
-      t.style.transform = `translate(${dx * force * 0.3}px, ${dy * force * 0.3}px)`;
-    } else {
-      t.style.transform = `translate(0,0)`;
-    }
-  });
-});
-</script>
 
 </body>
 </html>
