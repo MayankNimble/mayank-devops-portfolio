@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mayank</title>
 
 <style>
@@ -34,9 +34,9 @@ body {
   background-size: 400% 400%;
   animation: bgMove 22s ease infinite;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  overflow-x: hidden;
   color: var(--text);
 }
 
@@ -46,26 +46,36 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* FLOATING TEXT BACKGROUND */
+/* ENTRY ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FLOATING TEXT */
 .floating {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
 .float-text {
   position: absolute;
-  font-family: "Poppins", "Montserrat", system-ui;
   font-weight: 600;
   letter-spacing: 3px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   opacity: 0.18;
   animation: floatUp linear infinite;
   text-transform: uppercase;
 }
 
-/* Color variations */
 .float-text.linux { color: #9be7ff; }
 .float-text.aws { color: #ffd166; }
 .float-text.docker { color: #a3ffd6; }
@@ -74,18 +84,17 @@ body {
 .float-text.ansible { color: #ffc8dd; }
 .float-text.devops { color: #f1faee; }
 
-/* Positions & speed */
-.float-text:nth-child(1) { left: 8%;  bottom: -20%; animation-duration: 34s; }
-.float-text:nth-child(2) { left: 22%; bottom: -30%; animation-duration: 28s; }
-.float-text:nth-child(3) { left: 38%; bottom: -25%; animation-duration: 32s; }
-.float-text:nth-child(4) { left: 54%; bottom: -35%; animation-duration: 30s; }
+.float-text:nth-child(1) { left: 10%; bottom: -20%; animation-duration: 34s; }
+.float-text:nth-child(2) { left: 25%; bottom: -30%; animation-duration: 28s; }
+.float-text:nth-child(3) { left: 40%; bottom: -25%; animation-duration: 32s; }
+.float-text:nth-child(4) { left: 55%; bottom: -35%; animation-duration: 30s; }
 .float-text:nth-child(5) { left: 70%; bottom: -28%; animation-duration: 36s; }
 .float-text:nth-child(6) { left: 85%; bottom: -32%; animation-duration: 29s; }
-.float-text:nth-child(7) { left: 46%; bottom: -18%; animation-duration: 40s; }
+.float-text:nth-child(7) { left: 48%; bottom: -18%; animation-duration: 40s; }
 
 @keyframes floatUp {
   from { transform: translateY(0); }
-  to   { transform: translateY(-150vh); }
+  to { transform: translateY(-150vh); }
 }
 
 /* LAYOUT */
@@ -96,6 +105,7 @@ body {
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
   z-index: 1;
+  animation: fadeUp 1s ease forwards;
 }
 
 /* GLASS CARD */
@@ -108,14 +118,13 @@ body {
   box-shadow: 0 35px 80px rgba(0,0,0,0.45);
 }
 
-/* PROFILE (CENTERED IMAGE + NAME) */
+/* PROFILE */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   /* THIS IS THE KEY CHANGE */
+  justify-content: center;
   text-align: center;
-  min-height: 100%;
 }
 
 .profile img {
@@ -145,7 +154,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.4rem;
-  transition: all 0.35s ease;
+  transition: 0.35s ease;
 }
 
 .info-btn:hover {
@@ -178,10 +187,43 @@ body {
   opacity: 1;
 }
 
-/* RESPONSIVE */
+/* 📱 MOBILE OPTIMIZATION */
 @media (max-width: 900px) {
+
+  body {
+    align-items: flex-start;
+    padding: 1.2rem 0;
+  }
+
   .container {
     grid-template-columns: 1fr;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .card {
+    padding: 1.6rem;
+  }
+
+  .profile img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+  .info-btn {
+    padding: 1.2rem;
+  }
+
+  .floating {
+    opacity: 0.08;
   }
 }
 </style>
@@ -189,7 +231,7 @@ body {
 
 <body>
 
-<!-- FLOATING DEVOPS TEXT -->
+<!-- Floating Background Text -->
 <div class="floating">
   <div class="float-text linux">LINUX</div>
   <div class="float-text docker">DOCKER</div>
@@ -202,13 +244,11 @@ body {
 
 <div class="container">
 
-  <!-- PROFILE -->
   <div class="card profile">
     <img src="./profile.jpg" alt="Mayank">
     <div class="name">Mayank</div>
   </div>
 
-  <!-- DETAILS -->
   <div class="card details">
 
     <div class="info-btn">
