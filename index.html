@@ -10,11 +10,14 @@
   --bg1: #3a1c71;
   --bg2: #6b3074;
   --bg3: #2e8b8b;
-  --glass: rgba(255,255,255,0.10);
-  --border: rgba(255,255,255,0.18);
+
+  /* 🔥 MORE TRANSPARENT GLASS */
+  --glass: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.16);
+
   --text: #ffffff;
   --muted: rgba(255,255,255,0.65);
-  --accent: #ffd166; /* GOLD */
+  --accent: #ffd166;
 }
 
 /* RESET */
@@ -57,7 +60,7 @@ body {
   font-weight: 600;
   letter-spacing: 3px;
   font-size: 0.9rem;
-  opacity: 0.18;
+  opacity: 0.22;
   animation: floatUp linear infinite;
   text-transform: uppercase;
   transition: transform 0.15s ease-out;
@@ -95,14 +98,14 @@ body {
   z-index: 1;
 }
 
-/* CARD */
+/* GLASS CARD */
 .card {
   background: var(--glass);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 2rem;
-  box-shadow: 0 35px 80px rgba(0,0,0,0.45);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -110,20 +113,21 @@ body {
   transform: translateY(-6px);
 }
 
-/* PROFILE */
+/* PROFILE — TRUE CENTER */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-/* IMAGE (UNCHANGED) */
+/* IMAGE */
 .avatar-wrap {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
   animation: avatarBreath 8s ease-in-out infinite;
   transform: translateZ(0);
 }
@@ -141,12 +145,12 @@ body {
   border: 4px solid rgba(255,255,255,0.25);
 }
 
-/* 🔥 FLOATING NAME */
+/* NAME UNDER IMAGE */
 .name {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 2px;
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
   background: linear-gradient(90deg, #fff, var(--accent), #fff);
   background-size: 200%;
   -webkit-background-clip: text;
@@ -170,9 +174,9 @@ body {
   gap: 1.2rem;
 }
 
-/* 🔥 GOLDEN HOVER BACK */
+/* GOLDEN HOVER */
 .info-btn {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.4rem;
@@ -183,7 +187,7 @@ body {
   transform: perspective(900px) rotateX(6deg) rotateY(-6deg) scale(1.03);
   border-color: var(--accent);
   box-shadow:
-    0 0 0 1px rgba(255,209,102,0.4),
+    0 0 0 1px rgba(255,209,102,0.45),
     0 25px 55px rgba(255,209,102,0.25);
 }
 
@@ -245,36 +249,12 @@ body {
   </div>
 
   <div class="card details">
-    <div class="info-btn">
-      <span>Role</span>
-      <strong>DevOps Engineer</strong>
-      <p>Automating and maintaining scalable cloud systems.</p>
-    </div>
-    <div class="info-btn">
-      <span>Cloud</span>
-      <strong>AWS</strong>
-      <p>Infrastructure, security, monitoring, deployments.</p>
-    </div>
-    <div class="info-btn">
-      <span>Core Focus</span>
-      <strong>CI/CD · Automation</strong>
-      <p>Reliable pipelines and fast releases.</p>
-    </div>
-    <div class="info-btn">
-      <span>Stack</span>
-      <strong>Linux · Docker · Terraform</strong>
-      <p>Modern infrastructure workflows.</p>
-    </div>
-    <div class="info-btn">
-      <span>Configuration</span>
-      <strong>Ansible</strong>
-      <p>Consistent and repeatable environments.</p>
-    </div>
-    <div class="info-btn">
-      <span>Purpose</span>
-      <strong>Learning & Showcase</strong>
-      <p>Demonstrating real-world DevOps skills.</p>
-    </div>
+    <div class="info-btn"><span>Role</span><strong>DevOps Engineer</strong><p>Automating scalable cloud systems.</p></div>
+    <div class="info-btn"><span>Cloud</span><strong>AWS</strong><p>Infrastructure & deployments.</p></div>
+    <div class="info-btn"><span>Core Focus</span><strong>CI/CD · Automation</strong><p>Fast, reliable releases.</p></div>
+    <div class="info-btn"><span>Stack</span><strong>Linux · Docker · Terraform</strong><p>Modern workflows.</p></div>
+    <div class="info-btn"><span>Configuration</span><strong>Ansible</strong><p>Consistency everywhere.</p></div>
+    <div class="info-btn"><span>Purpose</span><strong>Learning & Showcase</strong><p>Real-world DevOps skills.</p></div>
   </div>
 
 </div>
