@@ -1,241 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayank | DevOps Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mayank | DevOps Engineer</title>
 
-  <style>
-    :root {
-      --glass-bg: rgba(255, 255, 255, 0.12);
-      --glass-border: rgba(255, 255, 255, 0.25);
-      --text-main: #ffffff;
-      --accent: #38bdf8;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #3b3f8c, #0a0d2e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f172a, #312e81, #020617);
-      overflow-x: hidden;
-      color: var(--text-main);
-    }
+/* background floating text */
+.bg-text {
+  position: fixed;
+  font-size: 120px;
+  opacity: 0.05;
+  font-weight: 800;
+  pointer-events: none;
+}
+.bg1 { top: 10%; left: 5%; }
+.bg2 { bottom: 10%; right: 5%; }
 
-    /* ===== FLOATING BACKGROUND TEXT ===== */
-    .floating-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+/* layout */
+.container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
 
-    .floating-bg span {
-      position: absolute;
-      color: rgba(255,255,255,0.08);
-      font-size: 40px;
-      animation: float 30s linear infinite;
-      white-space: nowrap;
-    }
+/* glass card */
+.card {
+  width: 320px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
 
-    @keyframes float {
-      from {
-        transform: translateY(110vh);
-      }
-      to {
-        transform: translateY(-120vh);
-      }
-    }
+/* profile */
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  border: 3px solid #5ac8fa;
+}
 
-    /* ===== LAYOUT ===== */
-    .container {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: auto;
-      align-items: center;
-    }
+h1 {
+  text-align: center;
+  margin: 15px 0 5px;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
+.role {
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 15px;
+}
 
-      .floating-bg span {
-        display: none; /* mobile = clean */
-      }
-    }
+/* skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
 
-    /* ===== GLASS CARD ===== */
-    .glass {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 22px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 28px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    }
+.skill {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.25);
+  font-size: 13px;
+}
 
-    /* ===== PROFILE ===== */
-    .profile {
-      text-align: center;
-    }
+/* api box */
+.api-box {
+  width: 320px;
+}
 
-    .profile img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      object-fit: cover;
-      margin-bottom: 16px;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #5ac8fa;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 6px;
-    }
+pre {
+  background: rgba(0,0,0,0.3);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  max-height: 220px;
+  overflow: auto;
+}
 
-    .subtitle {
-      opacity: 0.85;
-      margin-bottom: 18px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .tag {
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.15);
-      border: 1px solid rgba(56,189,248,0.4);
-      font-size: 13px;
-    }
-
-    /* ===== API SECTION ===== */
-    h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-
-    button {
-      margin-top: 14px;
-      padding: 10px 18px;
-      border-radius: 12px;
-      border: none;
-      background: var(--accent);
-      color: #020617;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-    }
-
-    .api-output {
-      margin-top: 16px;
-      background: rgba(0,0,0,0.35);
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 14px;
-      max-height: 260px;
-      overflow: auto;
-      white-space: pre-wrap;
-    }
-  </style>
+/* mobile */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- FLOATING BACKGROUND WORDS -->
-  <div class="floating-bg">
-    <span style="left:10%; animation-delay:0s;">AWS</span>
-    <span style="left:30%; animation-delay:5s;">Docker</span>
-    <span style="left:50%; animation-delay:10s;">Kubernetes</span>
-    <span style="left:70%; animation-delay:15s;">Terraform</span>
-    <span style="left:20%; animation-delay:20s;">Linux</span>
-    <span style="left:60%; animation-delay:25s;">DevOps</span>
+<div class="bg-text bg1">Kubernetes</div>
+<div class="bg-text bg2">Linux</div>
+
+<div class="container">
+
+  <!-- Profile -->
+  <div class="card">
+    <img class="avatar" src="https://i.pravatar.cc/150?img=3" />
+    <h1>Mayank</h1>
+    <div class="role">DevOps Engineer</div>
+
+    <div class="skills">
+      <div class="skill">AWS</div>
+      <div class="skill">Linux</div>
+      <div class="skill">Docker</div>
+      <div class="skill">Terraform</div>
+      <div class="skill">Ansible</div>
+      <div class="skill">CI/CD</div>
+    </div>
   </div>
 
-  <div class="container">
+  <!-- API -->
+  <div class="card api-box">
+    <h2>Live Serverless API</h2>
+    <p style="opacity:0.8">API Gateway + Lambda (Python)</p>
 
-    <!-- PROFILE CARD -->
-    <div class="glass profile">
-      <img src="profile.jpg" alt="Mayank" />
-      <h1>Mayank</h1>
-      <p class="subtitle">DevOps Engineer</p>
+    <button onclick="fetchAPI()">Fetch Live Data</button>
 
-      <div class="tags">
-        <div class="tag">AWS</div>
-        <div class="tag">Linux</div>
-        <div class="tag">Docker</div>
-        <div class="tag">Terraform</div>
-        <div class="tag">Ansible</div>
-        <div class="tag">CI/CD</div>
-      </div>
-    </div>
-
-    <!-- API CARD -->
-    <div class="glass">
-      <h2>Live Serverless API</h2>
-      <p class="subtitle">
-        Powered by API Gateway + Lambda (Python)
-      </p>
-
-      <button onclick="loadAPI()">Fetch Live Data</button>
-
-      <div id="api" class="api-output">
-        Loading API data...
-      </div>
-    </div>
-
+    <pre id="output">Waiting for request…</pre>
   </div>
 
-  <!-- API SCRIPT -->
-  <script>
-    async function loadAPI() {
-      const box = document.getElementById("api");
-      box.textContent = "Loading...";
+</div>
 
-      try {
-        const res = await fetch(
-          "https://8vbo6nk6s9.execute-api.us-east-1.amazonaws.com/dev",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            }
-          }
-        );
+<script>
+const API_URL = "PASTE_YOUR_API_GATEWAY_INVOKE_URL_HERE";
 
-        const data = await res.json();
-        box.textContent = JSON.stringify(data, null, 2);
-      } catch (err) {
-        box.textContent = "API connection failed";
-        console.error(err);
-      }
-    }
+async function fetchAPI() {
+  const output = document.getElementById("output");
+  output.textContent = "Loading...";
 
-    loadAPI();
-  </script>
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    });
+
+    if (!res.ok) throw new Error("HTTP " + res.status);
+
+    const data = await res.json();
+    output.textContent = JSON.stringify(data, null, 2);
+
+  } catch (err) {
+    output.textContent = "API connection failed ❌\n" + err.message;
+  }
+}
+</script>
 
 </body>
 </html>
