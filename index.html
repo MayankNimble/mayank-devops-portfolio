@@ -31,7 +31,6 @@
     transform: translateY(8px);
     transition: opacity 0.35s ease, transform 0.35s ease;
   }
-
   .info-btn:hover p {
     opacity: 1;
     transform: translateY(0);
@@ -128,7 +127,6 @@ body {
   position:relative;
 }
 
-/* 🔥 GOLDEN GLOW — ONLY WHEN ACTIVE */
 .active-glow {
   border-color: var(--accent);
   box-shadow:
@@ -186,10 +184,6 @@ body {
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:1.2rem;
-}
-
-.info-btn {
-  padding:1.4rem;
 }
 
 .info-btn span {
@@ -302,8 +296,23 @@ body {
     <span>About Me</span>
     <p class="about-text">
       I am a DevOps-focused student building practical skills in cloud infrastructure and automation. I have worked with AWS services and deployed real projects using CI/CD workflows, including this portfolio hosted on AWS Amplify.
-      I enjoy learning by building, breaking, and improving systems. Currently, I am expanding my knowledge of Linux, Docker, Terraform, and configuration management tools, with the goal of transitioning into a junior DevOps role.
     </p>
+  </div>
+
+  <!-- ADDED PROJECT SECTION -->
+  <div class="card full tilt">
+    <span>Featured Project</span>
+    <h3 style="margin-top:.6rem;font-size:1.4rem;">Serverless Reminder System (AWS)</h3>
+    <p class="about-text">
+      Designed and deployed a fully serverless reminder system using AWS services including API Gateway, Lambda, DynamoDB, SES, S3, and CloudFront.
+      Focused on infrastructure integration, CORS configuration, IAM permissions, and CDN deployment.
+    </p>
+    <div style="margin-top:1rem;">
+      <a href="https://d2y2l7cgdrvf5n.cloudfront.net" target="_blank"
+         style="color:var(--accent);text-decoration:none;font-weight:600;">
+         → Live Demo
+      </a>
+    </div>
   </div>
 
 </div>
@@ -321,33 +330,26 @@ body {
 </div>
 
 <script>
-/* CURSOR + TOUCH TILT WITH GOLDEN GLOW */
 document.querySelectorAll('.tilt').forEach(card => {
   const strength = 12;
-
   function activate(x, y) {
     const r = card.getBoundingClientRect();
     const dx = (x - (r.left + r.width/2)) / r.width;
     const dy = (y - (r.top + r.height/2)) / r.height;
-
     card.classList.add('active-glow');
     card.style.transform =
       `perspective(900px) rotateX(${(-dy * strength)}deg) rotateY(${dx * strength}deg)`;
   }
-
   function reset() {
     card.classList.remove('active-glow');
     card.style.transform = 'none';
   }
-
   card.addEventListener('mousemove', e => activate(e.clientX, e.clientY));
   card.addEventListener('mouseleave', reset);
-
   card.addEventListener('touchmove', e => {
     const t = e.touches[0];
     activate(t.clientX, t.clientY);
   });
-
   card.addEventListener('touchend', reset);
 });
 </script>
